@@ -1,5 +1,5 @@
 // OpenWeatherMapのAPIキーを設定
-const API_KEY = "あなたのOpenWeatherMapのAPIキー";
+const API_KEY = "196159874954b852211c889a8e00cd52";
 
 // 位置情報取得
 fetch('https://ipapi.co/json/')
