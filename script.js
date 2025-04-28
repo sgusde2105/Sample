@@ -5,7 +5,7 @@ const hour = new Date().getHours();
 const playlists = {
   morning: "https://open.spotify.com/playlist/5eZRF45oQTOTKxc6LlrdCC", // 朝6〜10時
   evening: "https://open.spotify.com/playlist/2zQmS4CcnQRlWh6mY5ph23", // 夕方16〜18時
-  night: "ttps://open.spotify.com/playlist/0rwum0FuoiCw54BVeHdJdO",   // 夜18〜20時
+  night: "https://open.spotify.com/playlist/0rwum0FuoiCw54BVeHdJdO",   // 夜18〜20時
   default: "https://open.spotify.com/playlist/7Ma3BudKw1eVehoTYh5y3F"   // それ以外
 };
 
