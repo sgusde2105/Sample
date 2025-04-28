@@ -12,7 +12,7 @@ fetch('https://ipapi.co/json/')
   })
   .then(response => response.json())
   .then(weatherData => {
-    const weather = weatherData.weather[0].main.toLowerCase(); // 天気（例：clear、rain）
+    const weatherId = weatherData.weather[0].id; // 天気コード番号
     const hour = new Date().getHours(); // 現在の時間
 
     // プレイリストURLをここに設定
@@ -24,8 +24,10 @@ fetch('https://ipapi.co/json/')
       default: "https://open.spotify.com/playlist/7Ma3BudKw1eVehoTYh5y3F"
     };
 
-    // 条件分岐
-    if (weather.includes("rain")) {
+    let isRain = (weatherId >= 500 && weatherId < 600); // 500〜599は「雨」
+    let isClear = (weatherId === 800); // 800は「快晴」
+
+    if (isRain) {
       if (hour >= 6 && hour < 12) {
         window.location.href = playlists.rain_morning;
       } else if (hour >= 17 && hour < 23) {
@@ -33,7 +35,7 @@ fetch('https://ipapi.co/json/')
       } else {
         window.location.href = playlists.default;
       }
-    } else if (weather.includes("clear")) {
+    } else if (isClear) {
       if (hour >= 6 && hour < 12) {
         window.location.href = playlists.clear_morning;
       } else if (hour >= 17 && hour < 23) {
@@ -49,4 +51,3 @@ fetch('https://ipapi.co/json/')
     console.error('エラー:', error);
     window.location.href = "https://open.spotify.com/playlist/7Ma3BudKw1eVehoTYh5y3F"; // エラー時もデフォルトへ
   });
-
